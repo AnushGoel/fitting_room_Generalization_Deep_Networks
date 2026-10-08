@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776AB)
 ![License](https://img.shields.io/badge/license-MIT-2BB596)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/fitting-room/blob/main/notebooks/generalization_study.ipynb)
-[![Dashboard](https://img.shields.io/badge/dashboard-Streamlit-E8A33D)](https://<your-app>.streamlit.app)
+[![Dashboard](https://img.shields.io/badge/dashboard-Streamlit-E8A33D)](https://ucqmyj72uecdeeiphuy95x.streamlit.app/)
 
 Weight initialization, L2 regularization, dropout, and early stopping are usually switched on together, which makes it hard to say what any one of them does. This project takes them apart. A 784–128–128–10 ReLU network is trained on Fashion-MNIST with everything held fixed (data split, optimizer, batch size, epoch budget) except one technique at a time. Every run records diagnostics that Keras does not report, thirteen predictions were written down before the experiment ran, and the results report is generated from the data so the write-up cannot drift from the numbers.
 
