@@ -2,10 +2,10 @@
 
 **One fixed neural network, six ways to train it, and a careful look at how much of what it learns actually transfers.**
 
-[![ci](https://github.com/<your-username>/fitting-room/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/fitting-room/actions/workflows/ci.yml)
+[![ci](https://github.com/AnushGoel/fitting_room_Generalization_Deep_Networks/actions/workflows/ci.yml/badge.svg)](https://github.com/AnushGoel/fitting_room_Generalization_Deep_Networks/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776AB)
 ![License](https://img.shields.io/badge/license-MIT-2BB596)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/fitting-room/blob/main/notebooks/generalization_study.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AnushGoel/fitting_room_Generalization_Deep_Networks/blob/master/notebooks/generalization_study.ipynb)
 [![Dashboard](https://img.shields.io/badge/dashboard-Streamlit-E8A33D)](https://ucqmyj72uecdeeiphuy95x.streamlit.app/)
 
 Weight initialization, L2 regularization, dropout, and early stopping are usually switched on together, which makes it hard to say what any one of them does. This project takes them apart. A 784–128–128–10 ReLU network is trained on Fashion-MNIST with everything held fixed (data split, optimizer, batch size, epoch budget) except one technique at a time. Every run records diagnostics that Keras does not report, thirteen predictions were written down before the experiment ran, and the results report is generated from the data so the write-up cannot drift from the numbers.
@@ -15,7 +15,21 @@ The name comes from the domain. In clothing and in machine learning, *fit* means
 ## Results
 
 <!-- RESULTS:START -->
-*This block is written by `make report` from the experiment outputs. Run the pipeline (see [Quickstart](#quickstart)) to fill it with the selected model, a comparison table of all configurations, the hypothesis verdicts, and the generalization-trajectory figure.*
+**Selected model:** He + dropout (p = 0.2). Test accuracy **88.86%** (95% CI 88.23%–89.46%), from a single evaluation after selection on validation data.
+
+| Configuration | Training acc. (dropout off) | Validation acc. | Clean gap | Best epoch |
+|---|---|---|---|---|
+| Baseline (Glorot, no regularization) | 92.94% | 89.74% | 3.20 pp | 20 |
+| He initialization | 93.90% | 89.71% | 4.19 pp | 26 |
+| He + L2 (λ = 0.001) | 90.66% | 88.88% | 1.78 pp | 24 |
+| He + L2 (λ = 0.01) | 86.68% | 86.66% | 0.02 pp | 38 |
+| He + dropout (p = 0.2) **(selected)** | 93.84% | 90.25% | 3.59 pp | 40 |
+| He + dropout (p = 0.4) | 92.04% | 89.49% | 2.55 pp | 39 |
+| Tuned: he_uniform, λ = 1.0e-05, p = 0.15 | 93.72% | 90.25% | 3.47 pp | 34 |
+
+**Pre-registered hypotheses:** `H1` ✅ `H2` ✅ `H3` ✅ `H4` ✅ `H5` ✅ `H6` ✅ `H7` ❌ `H8` ✅ `H9` ✅ `H10` ✅ `H11` ✅ `H12` ✅ `H13` ❌. Full evidence in [docs/RESULTS.md](docs/RESULTS.md).
+
+![Generalization trajectories](docs/figures/fig16_generalization_trajectories.png)
 <!-- RESULTS:END -->
 
 ## What the study asks
@@ -62,8 +76,8 @@ The notebook and the headless trainer write runs in the same format, so you can 
 ## Quickstart
 
 ```bash
-git clone https://github.com/<your-username>/fitting-room.git
-cd fitting-room
+git clone https://github.com/AnushGoel/fitting_room_Generalization_Deep_Networks.git
+cd fitting_room_Generalization_Deep_Networks
 pip install -e ".[notebook,app,dev]"
 
 make train      # optional: all configurations and seeds, headless (about 45-60 min on a CPU)

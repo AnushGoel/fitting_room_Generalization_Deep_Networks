@@ -19,7 +19,13 @@ A reference model for studying generalization: how initialization, weight penalt
 ## Metrics
 
 <!-- METRICS:START -->
-*Run the experiment and `python -m fitting_room report` to fill this block.*
+- **Selected configuration:** He + dropout (p = 0.2) (784-128-128-10 ReLU network, softmax output; hidden-layer initializer: he_normal; L2 on hidden kernels: none; dropout after each hidden layer: 0.2; Adam (default settings), batch size 128; weights restored from epoch 40 of 40)
+- **Validation accuracy (best epoch 40):** 90.25%
+- **Test accuracy:** 88.86% (95% Wilson interval 88.23% to 89.46%)
+- **Test cross-entropy:** 0.3423
+- **Test expected calibration error:** 2.87%
+- **Weakest classes by F1:** Shirt (0.708), Pullover (0.799), Coat (0.808)
+- **Strongest classes by F1:** Sandal (0.973), Bag (0.975), Trouser (0.981)
 <!-- METRICS:END -->
 
 Accuracy is the headline metric because the classes are balanced. It is reported with a Wilson interval, alongside per-class precision, recall, and F1, cross-entropy, and expected calibration error, because a model can hold its accuracy while its probabilities become overconfident (Guo et al., 2017).

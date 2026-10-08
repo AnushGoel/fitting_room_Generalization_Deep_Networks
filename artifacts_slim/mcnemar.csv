@@ -1,0 +1,6 @@
+Compared with,"Selected right, other wrong (b)","Other right, selected wrong (c)",Accuracy difference,Exact p,Holm-adjusted p
+"Baseline (Glorot, no regularization)",320,269,+0.51 pp,0.0393,0.0733
+He initialization,349,295,+0.54 pp,0.0367,0.0733
+He + L2 (λ = 0.001),393,256,+1.37 pp,8.43e-08,3.37e-07
+He + L2 (λ = 0.01),613,254,+3.59 pp,5.42e-35,2.71e-34
+He + dropout (p = 0.4),280,204,+0.76 pp,0.000637,0.00191

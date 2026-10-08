@@ -7,7 +7,7 @@ authors:
 version: 1.0.0
 date-released: 2026-10-07
 license: MIT
-repository-code: "https://github.com/<your-username>/fitting-room"
+repository-code: "https://github.com/AnushGoel/fitting_room_Generalization_Deep_Networks"
 keywords: [generalization, regularization, dropout, weight initialization, calibration, reproducibility, fashion-mnist]
 references:
   - type: article

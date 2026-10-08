@@ -1,0 +1,6 @@
+Model,Training accuracy,Validation accuracy,Key observation
+Baseline (no techniques),93.64%,89.74%,Validation CE bottoms out at epoch 8 and ends 43% higher; gap at best epoch 3.9 pp; overfits in confidence when trained to 40 epochs.
+He initialization,94.69%,89.71%,Epoch-1 validation accuracy -0.4 pp vs. baseline; best validation -0.03 pp (within noise): an early-training effect.
+Best L2 model (L2 0.001),89.83%,88.88%,Gap at best epoch 5.0 → 1.0 pp; training accuracy -4.9 pp vs. He; a workable balance.
+Best dropout model (Dropout 0.2),92.28%,90.25%,Clean gap 4.2 → 3.6 pp; Keras training accuracy below validation in 12 of 40 epochs.
+Final selected model (Dropout 0.2),92.28%,90.25%,Selected on validation; test accuracy 88.86% (-1.39 pp vs. validation).
