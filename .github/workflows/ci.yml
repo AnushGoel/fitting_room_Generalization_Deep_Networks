@@ -29,7 +29,10 @@ jobs:
           nb = json.load(open("notebooks/generalization_study.ipynb"))
           for c in nb["cells"]:
               if c["cell_type"] == "code":
-                  ast.parse("".join(c["source"]))
+                  src = "".join(c["source"])
+                  # IPython magics and shell lines (%cd, !pip) are not Python syntax
+                  src = "\n".join(l for l in src.splitlines() if not l.lstrip().startswith(("%", "!")))
+                  ast.parse(src)
           print(len(nb["cells"]), "cells OK")
           PY
       - name: Repository stays small
