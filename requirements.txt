@@ -1,0 +1,6 @@
+# Dashboard (Streamlit Community Cloud installs this file)
+numpy>=1.26
+pandas>=2.1
+pillow>=10
+streamlit>=1.50
+plotly>=5.18

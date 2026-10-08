@@ -1,0 +1,41 @@
+# Experimental protocol. Everything here is held fixed across configurations except the [experiments] table.
+[protocol]
+seed = 42
+epochs = 40
+batch_size = 128
+n_val = 10000         # validation images carved from the 60,000 training images (stratified)
+clean_subset = 10000  # training images re-scored each epoch with dropout off
+probe_n = 2000        # validation images used for activation diagnostics
+extra_seeds = [7, 2024]
+artifacts = "artifacts"
+
+# One technique changes at a time. init = "default" keeps the Keras default (Glorot uniform).
+[experiments.baseline]
+init = "default"
+l2 = 0.0
+dropout = 0.0
+
+[experiments.he_init]
+init = "he_normal"
+l2 = 0.0
+dropout = 0.0
+
+[experiments."l2_0.001"]
+init = "he_normal"
+l2 = 0.001
+dropout = 0.0
+
+[experiments."l2_0.01"]
+init = "he_normal"
+l2 = 0.01
+dropout = 0.0
+
+[experiments."dropout_0.2"]
+init = "he_normal"
+l2 = 0.0
+dropout = 0.2
+
+[experiments."dropout_0.4"]
+init = "he_normal"
+l2 = 0.0
+dropout = 0.4

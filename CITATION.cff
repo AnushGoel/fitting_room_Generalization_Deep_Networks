@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or its findings, please cite it as below."
+title: "The Fitting Room: a controlled study of generalization in a fixed dense network on Fashion-MNIST"
+authors:
+  - family-names: Goel
+    given-names: Anush
+version: 1.0.0
+date-released: 2026-10-07
+license: MIT
+repository-code: "https://github.com/<your-username>/fitting-room"
+keywords: [generalization, regularization, dropout, weight initialization, calibration, reproducibility, fashion-mnist]
+references:
+  - type: article
+    title: "Fashion-MNIST: A novel image dataset for benchmarking machine learning algorithms"
+    authors: [{family-names: Xiao, given-names: Han}, {family-names: Rasul, given-names: Kashif}, {family-names: Vollgraf, given-names: Roland}]
+    year: 2017
+    identifiers: [{type: doi, value: 10.48550/arXiv.1708.07747}]

@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install (no TensorFlow needed)
+        run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check src tests
+      - name: Tests
+        run: pytest -q
+      - name: Notebook is valid JSON and every code cell parses
+        run: |
+          python - <<'PY'
+          import ast, json
+          nb = json.load(open("notebooks/generalization_study.ipynb"))
+          for c in nb["cells"]:
+              if c["cell_type"] == "code":
+                  ast.parse("".join(c["source"]))
+          print(len(nb["cells"]), "cells OK")
+          PY
+      - name: Repository stays small
+        run: |
+          size=$(git count-objects -vH | awk '/size-pack/ {print $2, $3}')
+          echo "pack size: $size"
+          du -sh --exclude=.git .

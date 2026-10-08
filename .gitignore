@@ -1,0 +1,20 @@
+# Heavy, regenerable outputs (see README, "Storage")
+artifacts/
+!artifacts_slim/
+*.keras
+*.db
+*.npz
+!artifacts_slim/*.npz
+
+# Python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
