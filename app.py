@@ -129,8 +129,9 @@ def fmt_pct(x, d=2):
 # ----------------------------------------------------------------------------------------------
 # Data
 # ----------------------------------------------------------------------------------------------
-DEFAULT_ART = Path(__file__).resolve().parent / "artifacts"
-
+HERE = Path(__file__).resolve().parent
+# Full results (local runs) take priority; the slim bundle committed to git is the fallback for deployment.
+DEFAULT_ART = next((p for p in (HERE / "artifacts", HERE / "artifacts_slim") if (p / "runs.json").exists()), HERE / "artifacts")
 
 @st.cache_resource(show_spinner="Loading results")
 def load_artifacts(path_str):
